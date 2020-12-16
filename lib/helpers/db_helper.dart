@@ -8,7 +8,7 @@ class DBHelper {
     String path = join(dbPath, 'series.db');
     db = await openDatabase(path, onCreate: (db, version) {
       db.execute(
-          'CREATE TABLE mis_series(id TEXT PRIMARY KEY, tituloOriginal TEXT, tituloTraducido TEXT, numTemporadas INTEGER, numEpisodios INTEGER, calificacionImbd REAL, productorSerie TEXT)');
+          'CREATE TABLE mis_series(id TEXT PRIMARY KEY, tituloOriginal TEXT, tituloTraduccion TEXT, numTemporadas INTEGER, numEpisodios INTEGER, calificacionImbd REAL, productorSerie TEXT)');
     }, version: 1);
     return db;
   }
