@@ -15,14 +15,13 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         title: 'Mis Series',
         debugShowCheckedModeBanner: false,
-        theme: ThemeData(
-          primarySwatch: Colors.indigo, 
-          accentColor: Colors.amber
-        ),
+        theme:
+            ThemeData(primarySwatch: Colors.indigo, accentColor: Colors.amber),
         home: ListaSeriesScreen(),
         routes: {
-          AgregarSerieScreen.routeName: (context) => AgregarSerieScreen()
+          AgregarSerieScreen.routeName: (context) => AgregarSerieScreen(),
           DetalleSerieScreen.routeName: (context) => DetalleSerieScreen()
+        },
       ),
     );
   }

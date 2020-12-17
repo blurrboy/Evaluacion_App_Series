@@ -21,43 +21,42 @@ class ListaSeriesScreen extends StatelessWidget {
       ),
       body: FutureBuilder(
         future: Provider.of<MisSeries>(context, listen: false).traerSeries(),
-        builder: (context,snapshot) => snapshot.connectionState == ConnectionState.waiting
-        ? Center(
-          child: CircularProgressIndicator(),
-          )
-          :Consumer<MisSeries>(
-            child: Center(
-              child: Text('No hay Series, Agregalas'
-              ),
-              ),
-              builder: (context, misSeries,ch) => misSeries.items.length <=0
-              ? ch
-              : ListView.builder(
-                itemCount: misSeries.items.length,
-                itemBuilder: (context,i) => Dismissible(
-                  key: UniqueKey(),
-                  onDismissed: (direction){
-                    Provider.of<MisSeries>(context, listen: false).eliminarSerie(misSeries.items[i].id)
-                  },
-                  background: Container(
-                  child: Center(
-                    child: Text('ELIMINAR',
-                    style: TextStyle(color: Colors.red),
-                    ),
-                  ),
-                  color: Colors.red,
-                  ),
-                  child: ListTile(
-                  title: Text(misSeries.items[i].tituloOriginal),
-                  subtitle: Text(misSeries.items[i].tituloTraduccion),
-                  onTap: () => Navigator.of(context).pushNamed(
-                    DetalleSerieScreen.routeName
-                    arguments: misSeries.items[i].id
-                  ),
-
-                )
-                )
-          )
+        builder: (context, snapshot) => snapshot.connectionState ==
+                ConnectionState.waiting
+            ? Center(
+                child: CircularProgressIndicator(),
+              )
+            : Consumer<MisSeries>(
+                child: Center(
+                  child: Text('No hay Series, Agregalas'),
+                ),
+                builder: (context, misSeries, ch) => misSeries.items.length <= 0
+                    ? ch
+                    : ListView.builder(
+                        itemCount: misSeries.items.length,
+                        itemBuilder: (context, i) => Dismissible(
+                            key: UniqueKey(),
+                            onDismissed: (direction) {
+                              Provider.of<MisSeries>(context, listen: false)
+                                  .eliminarSerie(misSeries.items[i].id);
+                            },
+                            background: Container(
+                              child: Center(
+                                child: Text(
+                                  'ELIMINAR',
+                                  style: TextStyle(color: Colors.red),
+                                ),
+                              ),
+                              color: Colors.red,
+                            ),
+                            child: ListTile(
+                              title: Text(misSeries.items[i].tituloOriginal),
+                              subtitle:
+                                  Text(misSeries.items[i].tituloTraduccion),
+                              onTap: () => Navigator.of(context).pushNamed(
+                                  DetalleSerieScreen.routeName,
+                                  arguments: misSeries.items[i].id),
+                            )))),
       ),
     );
   }

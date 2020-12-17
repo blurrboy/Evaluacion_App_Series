@@ -1,6 +1,3 @@
-
-
-
 import 'package:app_series/providers/mis_series.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -10,8 +7,9 @@ class DetalleSerieScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final id = ModalRoute.of(context).settings.arguments;
-    final serieSeleccionada = Provider.of<MisSeries>(context).encontrarSeriePorID(id);
-    
+    final serieSeleccionada =
+        Provider.of<MisSeries>(context).encontrarSeriePorID(id);
+
     return Scaffold(
       appBar: AppBar(
         title: Text(serieSeleccionada.tituloOriginal),
@@ -22,13 +20,10 @@ class DetalleSerieScreen extends StatelessWidget {
           Text(
             serieSeleccionada.tituloTraduccion,
             textAlign: TextAlign.center,
-            style: TextStyle(
-              fontSize: 25,
-              color: Colors.black
-            ),
+            style: TextStyle(fontSize: 25, color: Colors.black),
           ),
         ],
-        ),
-    )
+      ),
+    );
   }
 }

@@ -17,6 +17,10 @@ class _AgregarSerieScreenState extends State<AgregarSerieScreen> {
   final productorSerieController = TextEditingController();
 
   void guardarSerie() {
+    int numTemp = int.parse(numTemporadasController.text);
+    int numEpis = int.parse(numEpisodiosController.text);
+    double califiImbd = double.parse(calificacionImbdController.text);
+
     if (tituloOriginalController.text.isEmpty ||
         tituloTraducidoController.text.isEmpty ||
         numTemporadasController.text.isEmpty ||
@@ -28,9 +32,9 @@ class _AgregarSerieScreenState extends State<AgregarSerieScreen> {
     Provider.of<MisSeries>(context, listen: false).agregarSerie(
         tituloOriginalController.text,
         tituloTraducidoController.text,
-        numTemporadasController.text,
-        numEpisodiosController.text,
-        calificacionImbdController.text,
+        numTemp,
+        numEpis,
+        califiImbd,
         productorSerieController.text);
   }
 
@@ -83,7 +87,7 @@ class _AgregarSerieScreenState extends State<AgregarSerieScreen> {
             ),
             RaisedButton.icon(
               icon: Icon(Icons.add),
-              onPressed: (guardarLugar) {},
+              onPressed: guardarSerie,
               label: Text('Agregar Serie'),
               color: Theme.of(context).accentColor,
               elevation: 0,
